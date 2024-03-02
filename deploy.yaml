@@ -1,0 +1,53 @@
+# Set specific API version
+apiVersion: apps/v1
+
+# Type of Kubernetes resource
+kind: Deployment
+
+# Add information for resources
+metadata:
+
+  # Name of the Kubernetes resource
+  name: rabbit-sender
+
+# Define specifications for resources   
+spec:
+
+  # Number of pods to run at any given time
+  replicas: 1
+
+  # Manage pod only for specific label
+  selector:
+
+    # Select specific label
+    matchLabels:
+
+      # This deployment applies to any Pods matching the specified label
+      app: rabbit-sender
+
+  # This deployment will create a set of pods using the configurations in this template      
+  template:
+
+    # Add information for resources
+    metadata:
+
+      # The labels that will be applied to all of the pods in this deployment
+      labels:
+
+        # Define label name for resources    
+        app: rabbit-sender
+
+    # Set specification for resources
+    spec:
+
+      # Define image details
+      containers:
+
+      # Set resources name
+      - name: rabbit-sender
+
+        # Get image from registry
+        image: ghcr.io/agus-3rd-yoga/rabbitmq-sender:main
+
+        # Set condition for getting image
+        imagePullPolicy: IfNotPresent
