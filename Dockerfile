@@ -1,18 +1,18 @@
 FROM node:alpine as builder
 
 # Create app directory
-WORKDIR /usr/src/app
+#WORKDIR /usr/src/app
 
 # Install app dependencies
-COPY package.json yarn.lock ./
+#COPY package.json yarn.lock ./
 
-RUN yarn install --frozen-lockfile
+#RUN yarn install --frozen-lockfile
 
-COPY . .
+#COPY . .
 
 #RUN yarn build
 
-FROM node:alpine
+#FROM node:alpine
 
 ENV NODE_ENV production
 USER node
@@ -25,7 +25,7 @@ COPY package.json yarn.lock ./
 
 RUN yarn install --production --frozen-lockfile && yarn cache clean
 
-COPY --from=builder /usr/src/app/dist ./dist
+#COPY --from=builder /usr/src/app/dist ./dist
 
 #EXPOSE 8080
 CMD [ "node", "dist/index.js" ]
