@@ -18,14 +18,14 @@ ENV NODE_ENV production
 USER node
 
 # Create app directory
-WORKDIR /usr/src/app
+WORKDIR /app
 
 # Install app dependencies
 COPY package.json yarn.lock ./
 
 RUN yarn install --production --frozen-lockfile && yarn cache clean
 
-#COPY --from=builder /usr/src/app/dist ./dist
+COPY --from=builder /app/dist ./app
 
 #EXPOSE 8080
 #CMD [ "node", "dist/index.js" ]
