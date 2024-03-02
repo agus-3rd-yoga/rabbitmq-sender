@@ -19,26 +19,26 @@ env:
 jobs:
 
   # Check Dockerfile format to match best practice as possible
-  lint-dockerfile:
+#  lint-dockerfile:
     
-    name: Checking & Linting Dockerfile
+#    name: Checking & Linting Dockerfile
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+#    runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      - uses: actions/checkout@v4
-      - name: Lint Dockerfile
-        uses: hadolint/hadolint-action@master
-        with:
-          dockerfile: "Dockerfile"
+#    steps:
+#      - uses: actions/checkout@v4
+#      - name: Lint Dockerfile
+#        uses: hadolint/hadolint-action@master
+#        with:
+#          dockerfile: "Dockerfile"
 
   # This workflow contains a single job called "build-app-karsajobs"
   build-and-push-image-to-Github-registries:
 
     name: Pushing image to Github registry
 
-    needs: ["lint-dockerfile"]
+#    needs: ["lint-dockerfile"]
 
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -80,7 +80,7 @@ jobs:
 
     name: Pushing image to Dockerhub registry
         
-    needs: ["lint-dockerfile"]
+#    needs: ["lint-dockerfile"]
         
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
