@@ -41,7 +41,7 @@ jobs:
     needs: ["lint-dockerfile"]
 
     # The type of runner that the job will run on
-    runs-on: alpine
+    runs-on: ubuntu-latest
 
     permissions:
       contents: read
