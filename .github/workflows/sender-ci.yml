@@ -23,7 +23,7 @@ jobs:
     
     name: Checking & Linting Dockerfile
     # The type of runner that the job will run on
-    runs-on: alpine
+    runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -54,6 +54,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Using specific Node version
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
       - name: Log in to the Github Container registry
         uses: docker/login-action@v3
         with:
@@ -83,7 +88,7 @@ jobs:
     needs: ["lint-dockerfile"]
         
     # The type of runner that the job will run on
-    runs-on: alpine
+    runs-on: ubuntu-latest
         
     permissions:
       contents: read
@@ -101,6 +106,10 @@ jobs:
           # triggered a workflow, this defaults to the reference or SHA for that event.
           # Otherwise, uses the default branch.
           ref: 'main'
+      - name: Using specific Node version
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
       # Using Github provided API method to login to Dockerhub
       - name: Login to Docker Hub Container registry
