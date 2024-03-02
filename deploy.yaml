@@ -47,7 +47,7 @@ spec:
       - name: rabbit-sender
 
         # Get image from registry
-        image: ghcr.io/agus-3rd-yoga/rabbitmq-sender:main
+        image: docker.io/agus3rdyoga/rabbitmq-sender:latest
 
         # Set condition for getting image
         imagePullPolicy: IfNotPresent

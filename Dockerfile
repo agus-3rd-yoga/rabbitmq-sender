@@ -28,5 +28,5 @@ RUN yarn install --production --frozen-lockfile && yarn cache clean
 #COPY --from=builder /usr/src/app/dist ./dist
 
 #EXPOSE 8080
-CMD [ "node", "dist/index.js" ]
-#CMD [ "yarn", "start" ]
+#CMD [ "node", "dist/index.js" ]
+CMD [ "yarn", "start" ]
