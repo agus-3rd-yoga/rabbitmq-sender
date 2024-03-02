@@ -21,7 +21,7 @@ COPY . .
 
 # Build step for production
 FROM base
-RUN yarn build
+#RUN yarn build
 # Prune dev dependencies, modules ts files, yarn cache after build
 RUN yarn install --production && yarn autoclean --init && echo *.ts >> .yarnclean && yarn autoclean --force && yarn cache clean
 CMD ["node", "dist/index.js"]
